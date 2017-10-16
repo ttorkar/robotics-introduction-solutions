@@ -1,11 +1,11 @@
 from robots.alice import Robot, ALICE_MAX_SPEED, ALICE_LEFT, ALICE_CENTER
 
-ALICE_HARDWARE = False
+ALICE_HARDWARE = True
 
 # Select if we need the hardware or not (localhost simulator).
 robot = None
 if ALICE_HARDWARE:
-    robot = Robot(host="192.168.23.1")
+    robot = Robot(host="alice-bot.local")
 else:
     robot = Robot()
 

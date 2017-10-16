@@ -1,14 +1,14 @@
 from time import sleep
 from robots.alice import Robot, ALICE_MAX_SPEED, ALICE_CENTER, ALICE_LEFT, ALICE_HALF_LEFT, ALICE_HALF_RIGHT, ALICE_RIGHT
 
-ALICE_HARDWARE = False
+ALICE_HARDWARE = True
 LENGTH = 1.0
 WIDTH = 0.5
 
 # Select if we need the hardware or not (localhost simulator).
 robot = None
 if ALICE_HARDWARE:
-    robot = Robot(host="192.168.23.1")
+    robot = Robot(host="eve-bot.local")
 else:
     robot = Robot()
 
