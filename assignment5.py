@@ -10,7 +10,7 @@ last_time = None
 def on_global_position(lat, lon, angle_to_north, accuracy):
     global desired_direction, integrator, last_time
 
-    print "latlon: " + str(lat) + ":" + str(lon)
+    print("latlon: " + str(lat) + ":" + str(lon))
 
     dt = None
     if last_time is None:
@@ -25,7 +25,7 @@ def on_global_position(lat, lon, angle_to_north, accuracy):
     if error > pi:
         error -= 2*pi
 
-    print "ERR", error
+    print("ERR", error)
 
     integrator += error * dt
 
@@ -33,7 +33,7 @@ def on_global_position(lat, lon, angle_to_north, accuracy):
 
     robot.set_turn(-control)
 
-    print "AN", angle_to_north
+    print("AN", angle_to_north)
 
 robot = Robot()
 robot.on_global_position = on_global_position
