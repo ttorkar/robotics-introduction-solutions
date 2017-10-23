@@ -1,4 +1,4 @@
-from robots.alice import Robot, ALICE_MAX_SPEED, ALICE_LEFT, ALICE_CENTER
+from robots.alice import Robot, MAX_SPEED, TURN_LEFT, TURN_CENTER
 
 ALICE_HARDWARE = True
 
@@ -9,7 +9,7 @@ if ALICE_HARDWARE:
 else:
     robot = Robot()
 
-robot.set_speed(ALICE_MAX_SPEED)
+robot.set_speed(MAX_SPEED)
 
 
 # Let's be smart this time...
@@ -21,9 +21,9 @@ def on_sensor_reading(sensor, data):
 
         # If there is something, just turn left
         if min_dist < 0.2:
-            robot.set_turn(ALICE_LEFT)  # Use all speed to turn as sharp as possible
+            robot.set_turn(TURN_LEFT)  # Use all speed to turn as sharp as possible
         else:
-            robot.set_turn(ALICE_CENTER)  # No turn...
+            robot.set_turn(TURN_CENTER)  # No turn...
 
 
 robot.on_sensor_reading = on_sensor_reading

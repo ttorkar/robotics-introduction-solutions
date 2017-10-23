@@ -1,4 +1,4 @@
-from robots.alice import Robot
+from robots.alice import Robot, MAX_SPEED, MAX_TURN
 from math import pi
 import time
 
@@ -29,15 +29,19 @@ def on_global_position(lat, lon, angle_to_north, accuracy):
 
     integrator += error * dt
 
-    control = error * 3.0# + integrator * 0.5
+    p_gain = 3.0
+    i_gain = 0.5
 
-    robot.set_turn(-control)
+    control = error * p_gain# + integrator * i_gain
+
+    robot.set_turn(-control * MAX_TURN)
 
     print("AN", angle_to_north)
 
+
 robot = Robot()
 robot.on_global_position = on_global_position
-robot.set_speed(0.1)  # move with 1 m/s
+robot.set_speed(MAX_SPEED)  # move with 1 m/s
 
 robot.wait()
 robot.shutdown()
